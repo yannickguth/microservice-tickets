@@ -13,5 +13,19 @@ endpoints:
     health:
         sensitive: false
 
+---
+# For deployment without Docker containers
+spring:
+  profiles: default
+
 server:
     port: 8080
+
+
+---
+# For deployment in Docker containers
+spring:
+  profiles: docker
+
+server:
+    port: 80

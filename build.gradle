@@ -19,7 +19,7 @@ apply plugin: 'docker'
 
 distDocker {
 	exposePort 80
-	//setEnvironment 'JAVA_OPTS', '-Dspring.profiles.active=docker'
+	setEnvironment 'JAVA_OPTS', '-Dspring.profiles.active=docker'
 }
 
 docker {
