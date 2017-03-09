@@ -35,6 +35,7 @@ public class TicketServiceImpl implements TicketService {
 				createTicket(new Ticket("1", "Juicy Beats", 35.95, new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).parse("17.08.2017"), 1500));
 				createTicket(new Ticket("2", "Tanz in den Mai", 18.95, new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).parse("30.04.2017"), 200));
 				createTicket(new Ticket("3", "Halloween", 62.15, new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).parse("31.10.2016"), 55));
+				createTicket(new Ticket("4", "Silvester", 89.99, new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).parse("31.12.2017"), 95));
 			}
 		} catch (Exception e) {
 			LOG.error("Could not create Test Data");
