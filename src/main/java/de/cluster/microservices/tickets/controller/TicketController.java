@@ -34,6 +34,7 @@ public class TicketController {
     @RequestMapping(value = "/tickets", method = RequestMethod.POST)
     public ResponseEntity<String> createTicket(
         @RequestBody Ticket ticket) {
+        LOG.info("Creating ticket["+ticket+"]");
         String id = ticketService.createTicket(ticket);
         return new ResponseEntity<>(id,HttpStatus.OK);
     }
@@ -43,6 +44,7 @@ public class TicketController {
      */
     @RequestMapping(value = "/tickets", method = RequestMethod.PUT)
     public ResponseEntity<String> updateTicket(@RequestBody Ticket ticket) {
+        LOG.info("Updating ticket["+ticket+"]");
         ticketService.updateTicket(ticket);
         return new ResponseEntity<>("{}",HttpStatus.OK);
     }
@@ -52,6 +54,7 @@ public class TicketController {
      */
     @RequestMapping(value = "/tickets/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteTicket(@PathVariable String id) {
+        LOG.info("Delete ticket[id="+id+"]");
         ticketService.deleteTicket(id);
         return new ResponseEntity<>("{}",HttpStatus.OK);
     }
@@ -62,9 +65,10 @@ public class TicketController {
     @RequestMapping(value = "/tickets/{id}", method = RequestMethod.GET)
     public ResponseEntity<Ticket> getTicketById(
         @PathVariable String id) {
-        LOG.info("* get ticket by id *");
+        LOG.info("Fetching ticket["+id+"]");
         Ticket t = ticketService.getTicket(id);
         if(t == null) {
+            LOG.warn("Ticket not found["+id+"]");
             return new ResponseEntity<>((Ticket) null,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(t,HttpStatus.OK);
@@ -75,7 +79,7 @@ public class TicketController {
      */
     @RequestMapping(value = "/tickets", method = RequestMethod.GET)
 	public ResponseEntity<List<Ticket>> getTickets() {
-        LOG.info("* get all tickets *");
+        LOG.info("Fetching all tickets");
 		List<Ticket> tickets = ticketService.getTickets();
 		ResponseEntity<List<Ticket>> tRes = new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
 		return tRes;
