@@ -5,6 +5,10 @@ spring:
     application:
         name: tickets
 
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+
 ---
 # For deployment without Docker containers
 spring:
