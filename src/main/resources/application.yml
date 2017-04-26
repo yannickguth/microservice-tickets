@@ -6,6 +6,10 @@ spring:
         name: tickets
     zipkin:
       baseUrl: 10.1.101.6:9411
+    sleuth:
+      enabled: true
+    sampler:
+      percentage: 1.0
 
 logging:
   level:
